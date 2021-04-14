@@ -6,7 +6,7 @@
 
 3. Use **Jupyternotebook** to start the code and convert to .py after
 
-4. For the Part 3, I could use basic **ETL** skill to connect with postgresql.
+4. For the Part 3, I could use basic **ETL** skill to connect with postgresql
 
 
 ## Challenge: highest-profit
@@ -35,13 +35,13 @@ print out how many rows of data are left, after removing all the rows with inval
 2. Find the total rows of this df by using the "len" and print the result
 
 ```python
-Code: Total_row_profit = len(df)
+Total_row_profit = len(df)
 ```
 
 3. Drop non-numeric value by using erros= "coerce" 
 
 ```python
-Code: df['profit'] = pd.to_numeric(df['profit'],errors='coerce')
+df['profit'] = pd.to_numeric(df['profit'],errors='coerce')
 cleaned_df=df.dropna(subset=['profit'])
 ```
 4. Print the second answer
@@ -57,19 +57,19 @@ cleaned_df=df.dropna(subset=['profit'])
 1. Convert df to json file and save into local directory
 
 ```python
-Code: cleaned_df.to_json("data2.json")"
+cleaned_df.to_json("data2.json")"
 ```
 
 2. Bring the Json file and convert into pandas df
 
 ```python
-Code: json_df = pd.DataFrame.from_dict(json, orient="columns")
+json_df = pd.DataFrame.from_dict(json, orient="columns")
 ```
 
 3. Find the Top 20 profit values by using nlargest
 
 ```python
-Code: json_df = print(json_df.nlargest(20,['profit']))
+json_df = print(json_df.nlargest(20,['profit']))
 ```
 
 ## Part 3
@@ -83,7 +83,7 @@ Code: json_df = print(json_df.nlargest(20,['profit']))
 1. Use sqlalchemy and connect python with local postgres server
 
 ```python
-Code: from sqlalchemy import create_engine
+from sqlalchemy import create_engine
 rds_connection_string = "postgres:password@localhost:5432/SADA"
 engine = create_engine(f'postgresql://{rds_connection_string}')
 ```
@@ -104,11 +104,11 @@ CREATE TABLE highest_profit (
 4. Insert the df into database by using to_sql
 
 ```python
-code: json_df.to_sql(name='highest_profit', con=engine, if_exists='append', index=False)
+json_df.to_sql(name='highest_profit', con=engine, if_exists='append', index=False)
 ```
 
 5. Write and run sql query that can find the TOP 20 profit
 
 ```python
-code: pd.read_sql_query('SELECT DISTINCT * from highest_profit ORDER by profit DESC LIMIT 20', con=engine)
+pd.read_sql_query('SELECT DISTINCT * from highest_profit ORDER by profit DESC LIMIT 20', con=engine)
 ```
