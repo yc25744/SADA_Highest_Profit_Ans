@@ -5,3 +5,7 @@ CREATE TABLE highest_profit (
 	revenue float,
 	profit float
 );
+
+SELECT DISTINCT * from highest_profit 
+ORDER by profit DESC 
+LIMIT 20;
