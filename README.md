@@ -1,5 +1,12 @@
-# 
+# Approach to problem
 
+1. Read the problem and find which programing language to choose
+
+2. Decided to use **Python**
+
+3. Use **Jupyternotebook** to start the code and convert to .py after
+
+4. For the Part 3, I could use basic **ETL** skill to connect with postgresql.
 
 
 ## Challenge: highest-profit
@@ -23,21 +30,21 @@ print out how many rows of data are left, after removing all the rows with inval
 
 ## Part 1 Solution
 
-* First bring the URL CSV into python dataframe by using pandas
+1. First bring the URL CSV into python dataframe by using pandas
 
-* Find the total rows of this df by using the "len" and print the result
+2. Find the total rows of this df by using the "len" and print the result
 
 ```python
-# Code: Total_row_profit = len(df)
+Code: Total_row_profit = len(df)
 ```
 
-* Drop non-numeric value by using erros= "coerce" 
+3. Drop non-numeric value by using erros= "coerce" 
 
 ```python
-# Code: df['profit'] = pd.to_numeric(df['profit'],errors='coerce')
+Code: df['profit'] = pd.to_numeric(df['profit'],errors='coerce')
 cleaned_df=df.dropna(subset=['profit'])
 ```
-* Print the second answer
+4. Print the second answer
 
 ## Part 2
 
@@ -47,22 +54,22 @@ cleaned_df=df.dropna(subset=['profit'])
 
 ## Part 2 Solution
 
-* Convert df to json file and save into local directory
+1. Convert df to json file and save into local directory
 
 ```python
-# Code: cleaned_df.to_json("data2.json")"
+Code: cleaned_df.to_json("data2.json")"
 ```
 
-* Bring the Json file and convert into pandas df
+2. Bring the Json file and convert into pandas df
 
 ```python
-# Code: json_df = pd.DataFrame.from_dict(json, orient="columns")
+Code: json_df = pd.DataFrame.from_dict(json, orient="columns")
 ```
 
-* Find the Top 20 profit values by using nlargest
+3. Find the Top 20 profit values by using nlargest
 
 ```python
-# Code: json_df = print(json_df.nlargest(20,['profit']))
+Code: json_df = print(json_df.nlargest(20,['profit']))
 ```
 
 ## Part 3
@@ -73,12 +80,35 @@ cleaned_df=df.dropna(subset=['profit'])
 
 ## Part 3 Solution
 
-* Use sqlalchemy and connect python with local postgres server 
+1. Use sqlalchemy and connect python with local postgres server
 
-* I didn't connect postgres to server such as AWS RDS or GCP Cloud SQL
+```python
+Code: from sqlalchemy import create_engine
+rds_connection_string = "postgres:password@localhost:5432/SADA"
+engine = create_engine(f'postgresql://{rds_connection_string}')
+```
 
-* Login to pgadmin4 to create table first
+2. I didn't connect postgres to server such as AWS RDS or GCP Cloud SQL
 
-* Insert the df into database by using to_sql
+3. Login to pgadmin4 to create table first
 
-* Write and run sql query that can find the TOP 20 profit
+```python
+CREATE TABLE highest_profit (
+	Year int,
+	Rank int,
+	Company TEXT,
+	revenue float,
+	profit float
+)
+```
+4. Insert the df into database by using to_sql
+
+```python
+code: json_df.to_sql(name='highest_profit', con=engine, if_exists='append', index=False)
+```
+
+5. Write and run sql query that can find the TOP 20 profit
+
+```python
+code: pd.read_sql_query('SELECT DISTINCT * from highest_profit ORDER by profit DESC LIMIT 20', con=engine)
+```
