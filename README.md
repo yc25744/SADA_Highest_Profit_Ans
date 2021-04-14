@@ -1,4 +1,8 @@
-# Challenge: highest-profit
+# 
+
+
+
+## Challenge: highest-profit
 
 * First read the `Basic rules for challenges` (https://github.com/bobbae/gcp/blob/main/challenges/README.md).
 
@@ -23,8 +27,16 @@ print out how many rows of data are left, after removing all the rows with inval
 
 * Find the total rows of this df by using the "len" and print the result
 
+'''python
+# Code: Total_row_profit = len(df)
+'''
+
 * Drop non-numeric value by using erros= "coerce" 
 
+'''python
+# Code: df['profit'] = pd.to_numeric(df['profit'],errors='coerce')
+cleaned_df=df.dropna(subset=['profit'])
+'''
 * Print the second answer
 
 ## Part 2
@@ -37,9 +49,20 @@ print out how many rows of data are left, after removing all the rows with inval
 
 * Convert df to json file and save into local directory
 
+'''python
+# Code: cleaned_df.to_json("data2.json")
+'''
 * Bring the Json file and convert into pandas df
 
+'''python
+# Code: json_df = pd.DataFrame.from_dict(json, orient="columns")
+'''
+
 * Find the Top 20 profit values by using nlargest
+
+'''python
+# Code: json_df = print(json_df.nlargest(20,['profit']))
+'''
 
 ## Part 3
 
