@@ -14,6 +14,10 @@
 
 7. **data2.json** file will be located at resources folder
 
+PS. Sometimes jupyternote book does not display on github page due to github bug...
+Then please use https://nbviewer.jupyter.org/
+My .ipynb link: https://nbviewer.jupyter.org/github/yc25744/SADA_Highest_Profit_Ans/blob/main/Highest_Profit_Ans/Answer.ipynb
+
 
 ## Challenge: highest-profit
 
