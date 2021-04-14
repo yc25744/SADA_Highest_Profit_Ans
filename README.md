@@ -8,6 +8,8 @@
 
 4. For the Part 3, I could use basic **ETL** skill to connect with postgresql
 
+5. Please check my Answer.ipynb jupyter notebook. It shows all of the explnations and steps.
+
 
 ## Challenge: highest-profit
 
