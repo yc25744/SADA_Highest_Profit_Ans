@@ -28,14 +28,14 @@ Cleaned_Total_row_profit = len(cleaned_df)
 print(f"Second Answer: There are total number of cleaned {Cleaned_Total_row_profit} rows")
 
 #Save DF as Json file named "data2.json"
-cleaned_df.to_json("data2.json")
+cleaned_df.to_json("resources/data2.json")
 
 import json
 import os
 from pandas.io.json import json_normalize 
 
 # Read Jsonfile
-filepath = os.path.join("data2.json")
+filepath = os.path.join("resources/data2.json")
 with open(filepath) as jsonfile:
     json = json.load(jsonfile)
 

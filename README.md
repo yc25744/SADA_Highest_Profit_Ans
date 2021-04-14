@@ -6,9 +6,13 @@
 
 3. Use **Jupyternotebook** to start the code and convert to .py after
 
-4. For the Part 3, I could use basic **ETL** skill to connect with postgresql
+4. For the Part 3, I could use basic **ETL** skill to connect with postgresql | Bonus answer included
 
-5. Please check my Answer.ipynb jupyter notebook. It shows all of the explnations and steps.
+5. Please check my Answer.ipynb jupyter notebook. It shows all of the explnations and steps
+
+6. Made **requirements.txt** for python library that I have on my computer. Please use virtualenv and install my python libraries
+
+7. **data2.json** file will be located at resources folder
 
 
 ## Challenge: highest-profit
